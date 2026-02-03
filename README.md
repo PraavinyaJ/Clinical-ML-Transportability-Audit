@@ -1,25 +1,30 @@
-# Clinical-ML-Transportability-Audit
+# Clinical ML Transportability & Data Quality Audit (Planned)
 
-Current status: Evaluation plan and experimental design completed. Code to follow.
+**Status:** Not started (proposal / design complete)  
+**Start date:** [Feb 2026]  
+**Goal:** Stress-test a clinical ML model under dataset shift and data-quality issues, and report reliability (calibration) alongside discrimination.
 
-## Research Objective
+## What’s done
+- [x] Project scope + evaluation design drafted
+- [x] Metrics + reporting plan defined (AUROC, AUPRC, Brier score, calibration curve)
+- [x] Shift/perturbation taxonomy drafted (missingness, measurement noise, demographic shift)
 
-To evaluate the operational robustness of a clinical risk model when subjected to simulated system-level variations. This audit focuses on the gap between "in-silico" performance and "at-the-bedside" reality.
+## What’s planned
+- [ ] Baseline pipeline (data split, preprocessing, model training)
+- [ ] Reliability evaluation + calibration (train-only preprocessing; no leakage)
+- [ ] Synthetic perturbations (controlled missingness, noise, shift scenarios)
+- [ ] Shift detection / drift monitoring (optional)
+- [ ] Reproducible report (notebook + figures)
 
-## Synthetic "Hospital Setting" Framework
+## Method (high level)
+- **Metrics:** AUROC, AUPRC, Brier score, calibration curve / ECE  
+- **Shift tests:** 
+  - Missingness (MCAR/MAR-style simulations)
+  - Measurement noise / rounding / unit shifts
+  - Demographic shift (reweighting / subgroup resampling)
+- **Reporting:** performance + calibration drift across scenarios
 
-I am simulating three distinct deployment scenarios to test model stability:
+## Notes
+This repository currently contains the **evaluation plan only**. Code and experiments will be added once implementation begins.
 
-The Low-Resource Setting: High feature missingness (simulating charting delays or lack of advanced lab equipment).
 
-The Demographic Shift: Altered age/sex distribution (simulating a transition from a general hospital to a specialized geriatric or pediatric ward).
-
-The Measurement Noise: Stochastic perturbations in continuous variables (simulating variability in different lab manufacturers or sensor brands).
-
-## Evaluation Framework
-
-Unlike standard ML projects, this audit prioritizes reliability over accuracy:
-
-Discrimination: AUROC (Does the model still rank patients correctly?)
-
-Calibration: Brier Score & Calibration Curves (Does a "20% risk" actually mean 2 out of 10 patients?)
