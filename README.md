@@ -1,5 +1,7 @@
 # Clinical-ML-Transportability-Audit
 
+Current status: Evaluation plan and experimental design completed. Code to follow.
+
 ## Research Objective
 
 To evaluate the operational robustness of a clinical risk model when subjected to simulated system-level variations. This audit focuses on the gap between "in-silico" performance and "at-the-bedside" reality.
